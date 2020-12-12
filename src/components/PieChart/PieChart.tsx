@@ -1,25 +1,40 @@
 import React, { PureComponent } from 'react';
 import {
-  PieChart, Pie, Cell,
+  PieChart, Pie, Cell, Legend
 } from 'recharts';
 
-const data = [
-  { name: 'Group A', value: 400 },
-  { name: 'Group B', value: 300 },
-  { name: 'Group C', value: 300 },
-  { name: 'Group D', value: 200 },
-];
-const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 
+const COLORS = ['#1abc9c', '#3498db', '#9b59b6', '#34495e', '#f1c40f', '#e67e22', '#95a5a6', '#e74c3c', '#474787'];
 
-export default class Example extends PureComponent {
-  static jsfiddleUrl = 'https://jsfiddle.net/alidingling/3Leoa7f4/';
+type PropsFromParent = {
+  data: {
+    name: string,
+    value: number
+  }[]
+}
+
+type State = {
+  data: {
+    name: string,
+    value: number
+  }[]
+}
+
+type AllProps = PropsFromParent;
+
+export class Piechart extends PureComponent<AllProps, State> {
+
+  static getDerivedStateFromProps(props: AllProps) {
+    return {
+      data: props.data
+    }
+  }
 
   render() {
     return (
       <PieChart width={800} height={400} >
         <Pie
-          data={data}
+          data={this.state.data}
           cx={120}
           cy={200}
           innerRadius={60}
@@ -27,28 +42,18 @@ export default class Example extends PureComponent {
           fill="#8884d8"
           paddingAngle={5}
           dataKey="value"
+          label
+          labelLine
         >
           {
-            data.map((entry, index) => <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />)
+            this.state.data.map((entry, index) => <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />)
           }
         </Pie>
-        <Pie
-          data={data}
-          cx={420}
-          cy={200}
-          startAngle={180}
-          endAngle={0}
-          innerRadius={60}
-          outerRadius={80}
-          fill="#8884d8"
-          paddingAngle={5}
-          dataKey="value"
-        >
-          {
-            data.map((entry, index) => <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />)
-          }
-        </Pie>
+        <Legend align="center" layout="vertical" verticalAlign="middle" />
       </PieChart>
     );
   }
 }
+
+
+export default Piechart;
