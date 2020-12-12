@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect, ConnectedProps } from "react-redux";
+import { Link, Route, RouteComponentProps } from "react-router-dom";
 
 
 //import action creators
@@ -12,9 +13,10 @@ import { RootState } from "../../store/store";
 
 //iimport components
 import PieChart from '../../components/PieChart/PieChart';
+import CollegeStats from '../../components/CollegeStats/CollegeStats';
 
 type PropsFromParents = {
-
+    
 }
 
 const mapStateToProps = (state: RootState) => {
@@ -33,7 +35,7 @@ const connector = connect(mapStateToProps, mapDispatchToProps);
 
 type PropsFromRedux = ConnectedProps<typeof connector>;
 
-type AllProps = PropsFromParents & PropsFromRedux;
+type AllProps = PropsFromParents & PropsFromRedux & RouteComponentProps;
 
 
 type State = {
@@ -47,12 +49,14 @@ export class Dashboard extends React.Component<AllProps, State> {
     }
 
     render() {
-        console.log("xxx", this.props.statewiseStats);
         return (
             <div>
             	<h1>Dashboard</h1>
+                <Link to={{pathname: "/coursewise", search: "?course=civil"}}>course</Link>
+                <Link to={{pathname: "/statewise", search: "?state=UP"}}>state</Link>
                 <PieChart data={this.props.statewiseStats && this.props.statewiseStats} />
-                {/* // <PieChart /> */}
+                <Route exact path={`/statewise`} component={CollegeStats} />
+                <Route exact path={`/coursewise`} component={CollegeStats} />
             </div>
         )
     }

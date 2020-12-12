@@ -3,6 +3,7 @@
  */
 
 export type College = {
+    _id: string;
     name: string;
     yearFounded: number;
     city: string;
@@ -16,8 +17,6 @@ export type StatewiseStat = {
     name: string,
     value: number
 }
-
-
 
 
 
@@ -82,9 +81,35 @@ export type FetchStatewiseStatsActions =
     | FetchStatewiseStatsFailureAction;
 
 
+/**
+ * TYPES FOR FILTERING COLLEGES 
+ */
 
+
+export type filterCollegesStartAction = {
+    type: "FILTER_COLLEGES_START";
+};
+
+export type filterCollegesSuccessAction = {
+    type: "FILTER_COLLEGES_SUCCESS";
+    payload: College[]
+};
+
+export type filterCollegesFailureAction = {
+    type: "FILTER_COLLEGES_FAILURE";
+    payload: {
+        message: string;
+    };
+};
+
+
+export type FilterCollegesActions =
+    | filterCollegesStartAction
+    | filterCollegesSuccessAction
+    | filterCollegesFailureAction;
 
 
 export type AllActions =
     | FetchAllCollegesActions
     | FetchStatewiseStatsActions
+    | FilterCollegesActions

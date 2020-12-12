@@ -19,9 +19,14 @@ const reducer: Reducer<CollegeState, AllActions> = (state = initState, action) =
                 ...state,
                 statewiseStats: action.payload
             }
+        case "FILTER_COLLEGES_SUCCESS":
+            return {
+                ...state,
+                fetchedColleges: action.payload
+            }
         default:
             return state;
     }
-};
+};  
 
 export default reducer;

@@ -94,3 +94,56 @@ export const asyncFetchStatewiseStatsStart = (): ThunkAction<
     };
 };
 
+
+/**
+ * Actions creators for game score
+ */
+
+
+export const filterCollegesStart = () => {
+    return {
+        type: "FILTER_COLLEGES_START",
+    };
+};
+
+export const filterCollegesSuccess = (
+    payload: College[]
+) => {
+    return {
+        type: "FILTER_COLLEGES_SUCCESS",
+        payload: payload,
+    };
+};
+
+export const filterCollegesFailure = (payload: {
+    message: string;
+}) => {
+    return {
+        type: "FILTER_COLLEGES_FAILURE",
+        payload: payload,
+    };
+};
+
+export const asyncFilterCollegesStart = (criteria: string, value : string): ThunkAction<
+    void,
+    RootState,
+    unknown,
+    Action<string>
+> => {
+    return async (dispatch) => {
+        dispatch(filterCollegesStart());
+        let queryString = `/colleges/filter?${criteria}=${value}`;
+        try {
+            let apiResponse = await Axios.get(queryString);
+            let apiResponseData: College[] = apiResponse.data.data;
+            console.log(apiResponseData,"xxxx");
+            dispatch(filterCollegesSuccess(apiResponseData));
+        } catch (e) {
+            dispatch(
+                filterCollegesFailure({
+                    message: e.message || "Some error occurred",
+                })
+            );
+        }
+    };
+};
