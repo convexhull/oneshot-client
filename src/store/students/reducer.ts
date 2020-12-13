@@ -16,7 +16,7 @@ const initState: StudentState = {
 const reducer: Reducer<StudentState, AllActions> = (state = initState, action) => {
     switch (action.type) {
         case "FETCH_STUDENT_DETAILS_SUCCESS":
-    console.log("xxxx", action.payload);
+    
 
             return {
                 ...state,   
