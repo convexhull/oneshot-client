@@ -11,7 +11,7 @@ export type Student = {
     yearOfBatch: number;
     college_id?: string;
     skills: string[];
-    college?: College | null
+    college: College[]
 }
 
 /**

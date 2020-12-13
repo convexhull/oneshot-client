@@ -1,0 +1,10 @@
+.Container {
+    width: 100%;
+}
+
+
+.college-list {
+    width: 90%;
+    margin: 0 auto;
+    box-shadow: 1px 1px 15px 1px rgba(0,0,0,0.6) ;
+}

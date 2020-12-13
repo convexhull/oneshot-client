@@ -189,9 +189,40 @@ export type FetchCollegeDetailsActions =
     | FetchCollegeDetailsFailureAction;
 
 
+
+
+
+/**
+ * TYPES FOR FETCHING SIMILAR COLLEGES
+ */
+
+
+export type FetchSimilarCollegesStartAction = {
+    type: "FETCH_SIMILAR_COLLEGES_START";
+};
+
+export type FetchSimilarCollegesSuccessAction = {
+    type: "FETCH_SIMILAR_COLLEGES_SUCCESS";
+    payload: College[]
+};
+
+export type FetchSimilarCollegesFailureAction = {
+    type: "FETCH_SIMILAR_COLLEGES_FAILURE";
+    payload: {
+        message: string;
+    };
+};
+
+
+export type FetchSimilarCollegesActions =
+    | FetchSimilarCollegesStartAction
+    | FetchSimilarCollegesSuccessAction
+    | FetchSimilarCollegesFailureAction;
+
 export type AllActions =
     | FetchAllCollegesActions
     | FetchStatewiseStatsActions
     | FetchCoursewiseStatsActions
     | FilterCollegesActions
     | FetchCollegeDetailsActions
+    | FetchSimilarCollegesActions

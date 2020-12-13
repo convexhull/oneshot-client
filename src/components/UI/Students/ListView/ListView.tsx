@@ -42,26 +42,32 @@ class ListView extends React.Component<AllProps, State>  {
 
     render() {
 
-        let studentsToRender = this.props.students.map( (student) => (
-            <li className={classes["list-item"]}>
+        let studentsToRender = this.props.students.map((student, idx) => (
+            <div className={classes["list-item"]}>
+                <p className={classes["list-item__srn"]}>{idx+1}</p>
                 <p className={classes["list-item__name"]}>{student.name}</p>
                 <p className={classes["list-item__year"]}>{student.yearOfBatch}</p>
                 <p className={classes["list-item__skills"]}>{student.skills.join(', ')}</p>
-                <button className={classes["list-item__btn"]} ><Link to={`/student/${student._id}`}>View</Link></button>
-            </li>
+                <Link to={`/student/${student._id}`}><p>View</p></Link>
+            </div>
         ))
 
         return (
             <div className={classes["Container"]}>
-                <ul className={classes["students-list"]}>
-                    <li className={classes["list-item"]}>
+                <div className={classes["students-list"]}>
+                    <div className={classes["list-description"]}>
+                        <p className={classes["list-description__title"]}>Students</p>
+                        <p className={classes["list-description__subtitle"]}>Detailed list of students</p>
+                    </div>
+                    <div className={classes["list-item"] + " " + classes["col-names"]}>
+                        <p className={classes["list-item__srn"]}>Sr no.</p>
                         <p className={classes["list-item__name"]}>Name</p>
                         <p className={classes["list-item__year"]}>Year of Batch</p>
                         <p className={classes["list-item__skills"]}>Skills</p>
                         <p className={classes["list-item__btn"]}></p>
-                    </li>
+                    </div>
                     {studentsToRender}
-                </ul>   
+                </div>
             </div>
         )
     }

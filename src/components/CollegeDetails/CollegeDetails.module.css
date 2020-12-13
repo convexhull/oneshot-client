@@ -1,4 +1,134 @@
 .Container {
     width: 100%;
     margin: 0 auto;
+    background-color: #ecf0f1;
+}
+
+.college-info {
+    width: 80%;
+    margin: 1rem auto 7.5rem auto;
+    background-color: #55efc4;
+    box-shadow: 1px 1px 15px 1px rgba(0,0,0,0.6) ;
+    border-radius: 10px;
+}
+
+.students-list {
+    width: 80%;
+    margin: 0 auto 7.5rem auto;
+    box-shadow: 1px 1px 15px 1px rgba(0,0,0,0.6) ;
+}
+
+.clg-img {
+    height: 400px;
+    object-fit: cover;
+    background-color: black;
+    background: url('../../assets/images/college.jpg');
+    background-position: center;
+}
+
+.clg-img img {
+    height: auto;
+    width: 100%;
+    max-height: 100%;
+    opacity: 0.5;
+}
+
+.clg-img__overlay {
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.clg-img__overlay span {
+    font-size: 1.5rem;
+    color: white;
+}
+
+.college-info__basic {
+    padding: 1rem;
+    color: white;
+}
+
+.college-info__name {
+    font-size: 3rem;
+    font-weight: 300;
+}
+
+
+.college-info__location {
+    font-size: 1.5rem;
+}
+
+
+.college-description__city {
+    padding: 1rem;
+}
+
+.college-description__state {
+    padding: 1rem;
+}
+
+.college-description__country {
+    padding: 1rem;
+}
+
+.college-description__year {
+    font-size: 2rem;
+    padding: 1rem;
+    text-align: center;
+}
+
+
+.college-description__other-info {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.college-description__loc-info {
+    margin-bottom: 2rem;
+}
+
+.college-description__location {
+    border-radius: 10px;
+    padding: 2rem 3rem;
+    box-shadow: 1px 1px 10px #be2edd;
+
+}
+.college-description__location-text {
+    text-align: center;
+    font-size: 2rem;
+}
+
+.college-description__courses-info {
+    margin-bottom: 2rem;
+}
+
+.college-description__courses {
+    border: 1px solid black;
+    padding: 2rem 3rem;
+}
+
+.college-description__courses-text {
+    font-size: 2rem;
+}
+
+.college-description__course {
+    margin-bottom: 2rem;
+}
+
+
+.main-spinner {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.similar-clg-btn {
+    text-align: center;
+    padding-bottom: 2rem;
 }

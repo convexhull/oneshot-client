@@ -1,6 +1,83 @@
 .Container {
     width: 100%;
-
+    background-color: #fff;
+    border-radius: 5px;
 }
 
 
+.list-description {
+    background-color: #be2edd;
+    width: 90%;
+    position: absolute;
+    height: 100px;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 1rem;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    color: white;
+}
+
+.list-description__title {
+    font-size: 1.5rem;
+    font-weight: 300;
+}
+
+.list-description__subtitle {
+    font-weight: 300;
+}
+
+
+.colleges-list {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    margin-top: 60px;
+    padding-top: 4rem;
+}
+
+.col-names {
+    color: #be2edd;
+}
+
+.list-item {
+    display: flex;
+    border-bottom: 1px solid rgb(190, 190, 190);
+    margin-right: 1rem;
+    margin-left: 1rem;
+    padding: 1rem 0;
+    padding-left: 1rem;
+}
+
+.list-item__srn {
+    flex-basis: 5%;
+}
+
+.list-item__name {
+    flex-basis: 25%;
+}
+
+.list-item__year {
+    flex-basis: 15%;
+}
+
+.list-item__skills {
+    flex-basis: 40%;
+}
+
+.list-item__btn {
+    flex-basis: 10%;
+}
+
+.spinner {
+    height: 200px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5rem;
+}

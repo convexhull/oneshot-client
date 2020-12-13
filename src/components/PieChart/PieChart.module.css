@@ -1,0 +1,9 @@
+.Container {
+}
+
+.sector:hover {
+    opacity: 0.9;
+    cursor: pointer;
+    fill: black;
+    transition: fill 0.2s;
+}

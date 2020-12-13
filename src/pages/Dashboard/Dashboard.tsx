@@ -2,6 +2,8 @@ import React from 'react';
 import { connect, ConnectedProps } from "react-redux";
 import { Link, Route, RouteComponentProps } from "react-router-dom";
 
+//import styles
+import classes from './Dashboard.module.css';
 
 //import action creators
 import * as collegeActions from '../../store/colleges/actionCreators';
@@ -16,13 +18,14 @@ import PieChart from '../../components/PieChart/PieChart';
 import CollegeStats from '../../components/CollegeFilter/CollegeStats';
 
 type PropsFromParents = {
-    
+
 }
 
 const mapStateToProps = (state: RootState) => {
     return {
         statewiseStats: state.colleges.statewiseStats,
-        coursewiseStats: state.colleges.coursewiseStats
+        coursewiseStats: state.colleges.coursewiseStats,
+        collegesLoading: state.loadingState.FILTER_COLLEGES
     }
 }
 
@@ -46,11 +49,15 @@ type State = {
 }
 
 export class Dashboard extends React.Component<AllProps, State> {
-
-    state = {
-        showStatewiseStats: false,
-        showCoursewiseStats: false,
-        filterCriteria: ''
+    tableRef: React.RefObject<HTMLInputElement>;
+    constructor(props: AllProps) {
+        super(props);
+        this.state = {
+            showStatewiseStats: false,
+            showCoursewiseStats: false,
+            filterCriteria: ''
+        }
+        this.tableRef = React.createRef();
     }
 
     componentDidMount() {
@@ -59,23 +66,33 @@ export class Dashboard extends React.Component<AllProps, State> {
     }
 
     piechartClickHandler = (filterBy: string, value: string) => {
-        this.setState( (state) => {
+        this.setState((state) => {
             return {
                 showStatewiseStats: (filterBy === "state" ? true : false),
                 showCoursewiseStats: (filterBy === "course" ? true : false),
                 filterCriteria: value
             }
         })
+        this.tableRef.current?.scrollIntoView();
     }
 
     render() {
         return (
-            <div>
-            	<h1>Dashboard</h1>
-                <PieChart data={this.props.statewiseStats && this.props.statewiseStats} type="state" sectorClicked={this.piechartClickHandler} />
-                <PieChart data={this.props.coursewiseStats && this.props.coursewiseStats} type="course" sectorClicked={this.piechartClickHandler} />
-                {this.state.showStatewiseStats ? <CollegeStats type="state" value={this.state.filterCriteria} /> : null }
-                {this.state.showCoursewiseStats ? <CollegeStats type="course" value={this.state.filterCriteria} /> : null }
+            <div className={classes["Container"]}>
+                <h1 className={classes["title"]}>Statewise & Coursewise Distribution of Colleges</h1>
+                <div className={classes["piechart-container"]}>
+                    <div className={classes["piechart-statewise"]}>
+                        <PieChart data={this.props.statewiseStats && this.props.statewiseStats} type="state" sectorClicked={this.piechartClickHandler} />
+                    </div>
+                    <div className={classes["piechart-coursewise"]}>
+                        <PieChart data={this.props.coursewiseStats && this.props.coursewiseStats} type="course" sectorClicked={this.piechartClickHandler} />
+                    </div>
+                </div>
+                <div ref={this.tableRef}>
+                    {this.state.showCoursewiseStats ? <CollegeStats type="course" value={this.state.filterCriteria} /> : null}
+                    {this.state.showStatewiseStats ? <CollegeStats type="state" value={this.state.filterCriteria} /> : null}
+                </div>
+
             </div>
         )
     }

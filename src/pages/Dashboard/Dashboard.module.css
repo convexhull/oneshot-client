@@ -1,0 +1,45 @@
+.Container {
+    width: 100%;
+}
+
+.title {
+    font-size: 2rem;
+    text-align: center;
+    margin: 2rem 0;
+}
+
+
+.piechart-container {
+    display: flex;
+    margin: 0 auto;
+    background-color: #ddd;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow-x: auto;
+}
+
+
+.piechart-statewise {
+    flex-basis: 50%;
+    background-color: #ccc;
+}
+
+
+.piechart-coursewise {
+    flex-basis: 50%;
+}
+
+
+
+
+
+
+
+
+
+@media (max-width: 1200px) {
+    .piechart-container {
+        flex-flow: column;
+    }
+}

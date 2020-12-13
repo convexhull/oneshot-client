@@ -243,3 +243,58 @@ export const asyncFetchCollegeDetailsStart = (collegeId: string): ThunkAction<
         }
     };
 };
+
+
+/**
+ * Actions creators for fetching similar colleges
+ */
+
+
+export const fetchSimilarCollegesStart = () => {
+    return {
+        type: "FETCH_SIMILAR_COLLEGES_START",
+    };
+};
+
+export const fetchSimilarCollegesSuccess = (
+    payload: College[]
+) => {
+    return {
+        type: "FETCH_SIMILAR_COLLEGES_SUCCESS",
+        payload: payload,
+    };
+};
+
+
+export const fetchSimilarCollegesFailure = (payload: {
+    message: string;
+}) => {
+    return {
+        type: "FETCH_SIMILAR_COLLEGES_FAILURE",
+        payload: payload,
+    };
+};
+
+
+export const asyncFetchSimilarCollegesStart = (city: string, courses: string[]): ThunkAction<
+    void,
+    RootState,
+    unknown,
+    Action<string>
+> => {
+    return async (dispatch) => {
+        dispatch(fetchSimilarCollegesStart());
+        let queryString = `/colleges/similar-colleges?city=${city}&courses=${courses.join(',')}`;
+        try {
+            let apiResponse = await Axios.get(queryString);
+            let apiResponseData: College[] = apiResponse.data.data;
+            dispatch(fetchSimilarCollegesSuccess(apiResponseData));
+        } catch (e) {
+            dispatch(
+                fetchSimilarCollegesFailure({
+                    message: e.message || "Some error occurred",
+                })
+            );
+        }
+    };
+};

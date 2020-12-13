@@ -9,13 +9,15 @@ const initState: StudentState = {
         name: '',
         yearOfBatch: 0,
         skills: [],
-        college: null
+        college: []
     }
 };
 
 const reducer: Reducer<StudentState, AllActions> = (state = initState, action) => {
     switch (action.type) {
         case "FETCH_STUDENT_DETAILS_SUCCESS":
+    console.log("xxxx", action.payload);
+
             return {
                 ...state,   
                 fetchedStudent: action.payload

@@ -62,7 +62,9 @@ export class Dashboard extends React.Component<AllProps, State> {
     render() {
         return (
             <div className={classes["Container"]}>
-                <ListView />
+                <div className={classes["college-list"]}>
+                    <ListView type={this.props.type} value={this.props.value}/>
+                </div>
             </div>
         )
     }
