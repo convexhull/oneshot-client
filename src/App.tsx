@@ -6,8 +6,8 @@ import { Switch, Route } from 'react-router-dom';
 //import components
 import Dashboard from './pages/Dashboard/Dashboard';
 import Layout from './hoc/Layout/Default/Layout';
-import CollegeDetails from './components/CollegeDetails/CollegeDetails';
-import StudentDetails from './components/StudentDetails/StudentDetails';
+import CollegeDetails from './pages/CollegeDetails/CollegeDetails';
+import StudentDetails from './pages/StudentDetails/StudentDetails';
 
 function App() {
   return (

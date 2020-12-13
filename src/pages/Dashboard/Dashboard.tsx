@@ -15,7 +15,7 @@ import { RootState } from "../../store/store";
 
 //iimport components
 import PieChart from '../../components/PieChart/PieChart';
-import CollegeStats from '../../components/CollegeFilter/CollegeStats';
+import CollegeStats from '../../components/CollegeFilter/CollegeFilter';
 
 type PropsFromParents = {
 

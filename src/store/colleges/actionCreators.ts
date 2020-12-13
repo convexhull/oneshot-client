@@ -7,7 +7,7 @@ import { RootState } from "../store";
 
 //import the axios instance with baseURL set to backend
 import Axios from "../../axios/axios";
-import { CollegeDetails } from "../../components/CollegeDetails/CollegeDetails";
+import { CollegeDetails } from "./types";
 
 /**
  * Action creators for fetching all colleges

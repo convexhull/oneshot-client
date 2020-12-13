@@ -58,7 +58,7 @@ class ListView extends React.Component<AllProps, State>  {
             <div className={classes["list-item"]}>
                 <p className={classes["list-item__srn"]}>{idx + 1}</p>
                 <p className={classes["list-item__name"]}>{college.name}</p>
-                <p className={classes["list-item__year"]}>{college.name}</p>
+                <p className={classes["list-item__year"]}>{college.yearFounded}</p>
                 <p className={classes["list-item__skills"]}>{college.courses.join(', ')}</p>
                 <Link to={`/college/${college._id}`}><p>View</p></Link>
             </div>

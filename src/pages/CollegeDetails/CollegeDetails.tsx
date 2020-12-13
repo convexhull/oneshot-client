@@ -23,9 +23,9 @@ import { RootState } from "../../store/store";
 
 
 //import components
-import StudentsList from "../UI/Students/ListView/ListView";
-import CollegesList from "../UI/College/ListView/ListView";
-import Button from "../UI/Button/Button";
+import StudentsList from "../../components/UI/Students/ListView/ListView";
+import CollegesList from "../../components/UI/College/ListView/ListView";
+import Button from "../../components/UI/Button/Button";
 
 type PropsFromParents = {
 

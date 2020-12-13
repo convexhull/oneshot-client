@@ -7,7 +7,7 @@ import { RouteComponentProps, withRouter } from "react-router-dom";
  */
 
 //import styles
-import classes from './CollegeStats.module.css';
+import classes from './CollegeFilter.module.css';
 
 
 //import components
