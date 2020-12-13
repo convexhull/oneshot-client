@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, Component } from 'react';
 import { withRouter, RouteComponentProps } from "react-router-dom";
 import {
   PieChart, Pie, Cell, Legend
@@ -11,7 +11,9 @@ type PropsFromParent = {
   data: {
     name: string,
     value: number
-  }[]
+  }[],
+  type: string,
+  sectorClicked: (filterBy: string, value: string) => void
 }
 
 type State = {
@@ -31,9 +33,6 @@ export class Piechart extends PureComponent<AllProps, State> {
     }
   }
 
-  sectorClickHandler = () => {
-    this.props.history.push('/statewise');
-  }
 
   render() {
     return (
@@ -48,10 +47,10 @@ export class Piechart extends PureComponent<AllProps, State> {
           paddingAngle={5}
           dataKey="value"
           label
-          labelLine
+          isAnimationActive={false}
         >
           {
-            this.state.data.map((entry, index) => <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} onClick={this.sectorClickHandler} />)
+            this.state.data.map((entry, index) => <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} onClick={ () => this.props.sectorClicked(this.props.type, entry.name)} />)
           }
         </Pie>
         <Legend align="center" layout="vertical" verticalAlign="middle" />

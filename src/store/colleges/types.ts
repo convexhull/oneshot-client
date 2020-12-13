@@ -1,3 +1,9 @@
+//import other types
+import { Student } from "../students/types";
+
+
+
+
 /**
  * Type for colleges slice of the app state
  */
@@ -14,16 +20,33 @@ export type College = {
 }
 
 export type StatewiseStat = {
-    name: string,
-    value: number
+    name: string;
+    value: number;
 }
 
 
+export type CoursewiseStat = {
+    name: string;
+    value: number
+}
+
+export type CollegeDetails = {
+    _id: string;
+    name: string;
+    yearFounded: number;
+    city: string;
+    state: string;
+    country: string;
+    courses: string[];
+    students: Student[]
+}
 
 
 export type CollegeState = {
     fetchedColleges: College[];
-    statewiseStats: StatewiseStat[]
+    statewiseStats: StatewiseStat[];
+    fetchedCollegeDetails: CollegeDetails;
+    coursewiseStats: CoursewiseStat[]
 };
 
 
@@ -80,6 +103,31 @@ export type FetchStatewiseStatsActions =
     | FetchStatewiseStatsSuccessAction
     | FetchStatewiseStatsFailureAction;
 
+/**
+ * TYPES FOR FETCHING COURSEWISE STATS
+ */
+
+
+export type FetchCoursewiseStatsStartAction = {
+    type: "FETCH_COURSEWISE_STATS_START";
+};
+
+export type FetchCoursewiseStatsSuccessAction = {
+    type: "FETCH_COURSEWISE_STATS_SUCCESS";
+    payload: CoursewiseStat[]
+};
+
+export type FetchCoursewiseStatsFailureAction = {
+    type: "FETCH_COURSEWISE_STATS_FAILURE";
+    payload: {
+        message: string;
+    };
+};
+
+export type FetchCoursewiseStatsActions =
+    | FetchCoursewiseStatsStartAction
+    | FetchCoursewiseStatsSuccessAction
+    | FetchCoursewiseStatsFailureAction;
 
 /**
  * TYPES FOR FILTERING COLLEGES 
@@ -109,7 +157,41 @@ export type FilterCollegesActions =
     | filterCollegesFailureAction;
 
 
+
+/**
+ * TYPES FOR FETCHING COLLEGE DETAILS
+ */
+
+
+
+
+
+export type FetchCollegeDetailsStartAction = {
+    type: "FETCH_COLLEGE_DETAILS_START";
+};
+
+export type FetchCollegeDetailsSuccessAction = {
+    type: "FETCH_COLLEGE_DETAILS_SUCCESS";
+    payload: CollegeDetails
+};
+
+export type FetchCollegeDetailsFailureAction = {
+    type: "FETCH_COLLEGE_DETAILS_FAILURE";
+    payload: {
+        message: string;
+    };
+};
+
+
+export type FetchCollegeDetailsActions =
+    | FetchCollegeDetailsStartAction
+    | FetchCollegeDetailsSuccessAction
+    | FetchCollegeDetailsFailureAction;
+
+
 export type AllActions =
     | FetchAllCollegesActions
     | FetchStatewiseStatsActions
+    | FetchCoursewiseStatsActions
     | FilterCollegesActions
+    | FetchCollegeDetailsActions

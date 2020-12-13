@@ -13,7 +13,7 @@ import { RootState } from "../../store/store";
 
 //iimport components
 import PieChart from '../../components/PieChart/PieChart';
-import CollegeStats from '../../components/CollegeStats/CollegeStats';
+import CollegeStats from '../../components/CollegeFilter/CollegeStats';
 
 type PropsFromParents = {
     
@@ -21,13 +21,14 @@ type PropsFromParents = {
 
 const mapStateToProps = (state: RootState) => {
     return {
-        statewiseStats: state.colleges.statewiseStats
+        statewiseStats: state.colleges.statewiseStats,
+        coursewiseStats: state.colleges.coursewiseStats
     }
 }
 
 const mapDispatchToProps = {
-    onLoadCollegeInfo: () => collegeActions.asyncFetchAllCollegesStart(),
-    onLoadStateWiseInfo: () => collegeActions.asyncFetchStatewiseStatsStart()
+    onLoadStateWiseInfo: () => collegeActions.asyncFetchStatewiseStatsStart(),
+    onLoadCourseWiseInfo: () => collegeActions.asyncfetchCoursewiseStatsStart()
 }
 
 
@@ -39,24 +40,42 @@ type AllProps = PropsFromParents & PropsFromRedux & RouteComponentProps;
 
 
 type State = {
-    
+    showStatewiseStats: boolean;
+    showCoursewiseStats: boolean;
+    filterCriteria: string;
 }
 
 export class Dashboard extends React.Component<AllProps, State> {
 
+    state = {
+        showStatewiseStats: false,
+        showCoursewiseStats: false,
+        filterCriteria: ''
+    }
+
     componentDidMount() {
         this.props.onLoadStateWiseInfo();
+        this.props.onLoadCourseWiseInfo();
+    }
+
+    piechartClickHandler = (filterBy: string, value: string) => {
+        this.setState( (state) => {
+            return {
+                showStatewiseStats: (filterBy === "state" ? true : false),
+                showCoursewiseStats: (filterBy === "course" ? true : false),
+                filterCriteria: value
+            }
+        })
     }
 
     render() {
         return (
             <div>
             	<h1>Dashboard</h1>
-                <Link to={{pathname: "/coursewise", search: "?course=civil"}}>course</Link>
-                <Link to={{pathname: "/statewise", search: "?state=UP"}}>state</Link>
-                <PieChart data={this.props.statewiseStats && this.props.statewiseStats} />
-                <Route exact path={`/statewise`} component={CollegeStats} />
-                <Route exact path={`/coursewise`} component={CollegeStats} />
+                <PieChart data={this.props.statewiseStats && this.props.statewiseStats} type="state" sectorClicked={this.piechartClickHandler} />
+                <PieChart data={this.props.coursewiseStats && this.props.coursewiseStats} type="course" sectorClicked={this.piechartClickHandler} />
+                {this.state.showStatewiseStats ? <CollegeStats type="state" value={this.state.filterCriteria} /> : null }
+                {this.state.showCoursewiseStats ? <CollegeStats type="course" value={this.state.filterCriteria} /> : null }
             </div>
         )
     }

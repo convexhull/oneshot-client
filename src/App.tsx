@@ -7,13 +7,15 @@ import { Switch, Route } from 'react-router-dom';
 import Dashboard from './pages/Dashboard/Dashboard';
 import Layout from './hoc/Layout/Default/Layout';
 import CollegeDetails from './components/CollegeDetails/CollegeDetails';
+import StudentDetails from './components/StudentDetails/StudentDetails';
 
 function App() {
   return (
     <div className="App">
       <Layout>
       	<Switch>
-          <Route path="/college" component={CollegeDetails} />
+          <Route exact path="/college/:collegeId" component={CollegeDetails} />
+          <Route path="/student/:studentId" component={StudentDetails} />
       	  <Route path="/" component={Dashboard} />
       	</Switch>
       </Layout>

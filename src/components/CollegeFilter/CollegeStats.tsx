@@ -22,7 +22,8 @@ import { RootState } from "../../store/store";
 
 
 type PropsFromParents = {
-
+    type: string;
+    value: string;
 }
 
 const mapStateToProps = (state: RootState) => {
@@ -49,10 +50,12 @@ type State = {
 export class Dashboard extends React.Component<AllProps, State> {
 
     componentDidMount() {
-        if(this.props.location.pathname === "/statewise") {
-            this.props.onFilterColleges("state", "UP");
-        } else {
-            this.props.onFilterColleges("course", "civil");
+        this.props.onFilterColleges(this.props.type, this.props.value);
+    }
+
+    componentDidUpdate(prevProps: AllProps, prevState: State) {
+        if(prevProps.type !== this.props.type || prevProps.value !== this.props.value){
+            this.props.onFilterColleges(this.props.type, this.props.value);
         }
     }
 

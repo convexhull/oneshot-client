@@ -8,11 +8,11 @@ import { composeWithDevTools } from "redux-devtools-extension";
 
 //import reducers
 import collegesReducer from "./colleges/reducer";
-// import studentsReducer from "./students/reducer";
+import studentsReducer from "./students/reducer";
 
 export const rootReducer = combineReducers({
-    colleges : collegesReducer
-    // studentsState: studentsReducer,
+    colleges : collegesReducer,
+    students: studentsReducer
 });
 
 const store = createStore(

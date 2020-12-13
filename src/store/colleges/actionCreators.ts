@@ -1,5 +1,5 @@
 //import types
-import { College, StatewiseStat } from "./types";
+import { College, CoursewiseStat, StatewiseStat } from "./types";
 
 import { ThunkAction } from "redux-thunk";
 import { Action } from "redux";
@@ -7,6 +7,7 @@ import { RootState } from "../store";
 
 //import the axios instance with baseURL set to backend
 import Axios from "../../axios/axios";
+import { CollegeDetails } from "../../components/CollegeDetails/CollegeDetails";
 
 /**
  * Action creators for fetching all colleges
@@ -60,9 +61,7 @@ export const fetchStatewiseStatsStart = () => {
     };
 };
 
-
 export const fetchStatewiseStatsSuccess = (payload: StatewiseStat[]) => {
-    console.log(payload);
     return {
         type: "FETCH_STATEWISE_STATS_SUCCESS",
         payload: payload
@@ -96,7 +95,50 @@ export const asyncFetchStatewiseStatsStart = (): ThunkAction<
 
 
 /**
- * Actions creators for game score
+ * Action creators for coursewise-stats
+ */
+
+export const fetchCoursewiseStatsStart = () => {
+    return {
+        type: "FETCH_COURSEWISE_STATS_START",
+    };
+};
+
+export const fetchCoursewiseStatsSuccess = (payload: CoursewiseStat[]) => {
+    return {
+        type: "FETCH_COURSEWISE_STATS_SUCCESS",
+        payload: payload
+    };
+};
+
+export const fetchCoursewiseStatsFailure= (payload: { message : string}) => {
+    return {
+        type: "FETCH_COURSEWISE_STATS_FAILURE",
+        payload: payload
+    };
+};
+
+export const asyncfetchCoursewiseStatsStart = (): ThunkAction<
+    void,
+    RootState,
+    unknown,
+    Action<string>
+> => {
+    return async (dispatch) => {
+        dispatch(fetchCoursewiseStatsStart());
+        try {
+            let apiResponse = await Axios.get(`/colleges/coursewise-stats`);
+            let apiResponseData: CoursewiseStat[] = apiResponse.data.data;
+            dispatch(fetchCoursewiseStatsSuccess(apiResponseData));
+        } catch (e) {
+            dispatch(fetchCoursewiseStatsFailure({ message: e.message }));
+        }
+    };
+};
+
+
+/**
+ * Actions creators for filtering colleges
  */
 
 
@@ -136,11 +178,65 @@ export const asyncFilterCollegesStart = (criteria: string, value : string): Thun
         try {
             let apiResponse = await Axios.get(queryString);
             let apiResponseData: College[] = apiResponse.data.data;
-            console.log(apiResponseData,"xxxx");
             dispatch(filterCollegesSuccess(apiResponseData));
         } catch (e) {
             dispatch(
                 filterCollegesFailure({
+                    message: e.message || "Some error occurred",
+                })
+            );
+        }
+    };
+};
+
+
+
+
+/**
+ * Actions creators for fetching college details
+ */
+
+
+export const fetchCollegeDetailsStart = () => {
+    return {
+        type: "FETCH_COLLEGE_DETAILS_START",
+    };
+};
+
+export const fetchCollegeDetailsSuccess = (
+    payload: CollegeDetails
+) => {
+    return {
+        type: "FETCH_COLLEGE_DETAILS_SUCCESS",
+        payload: payload,
+    };
+};
+
+export const fetchCollegeDetailsFailure = (payload: {
+    message: string;
+}) => {
+    return {
+        type: "FETCH_COLLEGE_DETAILS_FAILURE",
+        payload: payload,
+    };
+};
+
+export const asyncFetchCollegeDetailsStart = (collegeId: string): ThunkAction<
+    void,
+    RootState,
+    unknown,
+    Action<string>
+> => {
+    return async (dispatch) => {
+        dispatch(fetchCollegeDetailsStart());
+        let queryString = `/colleges/details?id=${collegeId}`;
+        try {
+            let apiResponse = await Axios.get(queryString);
+            let apiResponseData: CollegeDetails = apiResponse.data.data;
+            dispatch(fetchCollegeDetailsSuccess(apiResponseData));
+        } catch (e) {
+            dispatch(
+                fetchCollegeDetailsFailure({
                     message: e.message || "Some error occurred",
                 })
             );

@@ -1,0 +1,32 @@
+.Container {
+    width: 100%;
+}
+
+.students-list {
+    width: 100%;
+    list-style: none;
+    padding-inline-start: 0px;
+}
+
+.list-item {
+    display: flex;
+    background-color: #ccc;
+    border-bottom: 1px solid rgb(190, 190, 190);
+    padding: 0 1rem;
+}
+
+.list-item__name {
+    flex-basis: 30%;
+}
+
+.list-item__year {
+    flex-basis: 10%;
+}
+
+.list-item__skills {
+    flex-basis: 50%;
+}
+
+.list-item__btn {
+    flex-basis: 10%;
+}
