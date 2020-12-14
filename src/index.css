@@ -22,3 +22,10 @@ code {
 :root {
   --theme-pink: #be2edd;
 }
+
+
+@media (max-width: 767px) {
+  html {
+    font-size: 12px;
+  }
+}

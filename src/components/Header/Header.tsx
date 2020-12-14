@@ -28,7 +28,7 @@ export class Header extends React.Component<AllProps, State> {
         return (
             // <p className={classes["Container"]}><Link to="/"><i style={{"fontSize" : "3rem"}} className="fas fa-long-arrow-alt-left"></i>Dashboard</Link></p>
             <div className={classes["Container"]}>
-                <Link to="/"><span><i style={{"fontSize" : "3rem"}} className="fas fa-long-arrow-alt-left"></i></span></Link>
+                <Link to="/"><span><i style={{"fontSize" : "3rem"}} className="fas fa-home"></i></span></Link>
             </div>
         )
     }

@@ -17,6 +17,7 @@
     padding: 6rem 0;
     flex-wrap: wrap;
     box-shadow: 1px 1px 10px rgba(0,0,0,0.5);
+    border-radius: 10px;
 }
 
 
@@ -79,7 +80,7 @@
 
 /***************MEDIA QUERIES****************/
 
-@media (max-width: 1000px) {
+@media (max-width: 2900px) {
     .profile-info__profile-pic {
         flex-basis: 100%;
     }
@@ -96,6 +97,14 @@
     .profile-info__edit-profile {
         flex-basis: 100%;
         text-align: center;
+    }
+}
+
+
+
+@media (max-width: 767px) {
+    .profile-info {
+        width: 80%;
     }
 }
 

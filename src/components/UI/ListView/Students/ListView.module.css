@@ -31,7 +31,7 @@
 }
 
 
-.colleges-list {
+.students-list {
     width: 100%;
     margin: 0;
     padding: 0;
@@ -57,20 +57,24 @@
     background-color: #b2bec3;
 }
 
+
 .list-item__srn {
     flex-basis: 5%;
-    padding: 3px 0;
+    padding: 2px 0;
     color: var(--theme-pink);
+
 }
 
 .list-item__name {
     flex-basis: 25%;
     padding: 3px 0;
+
 }
 
 .list-item__year {
     flex-basis: 15%;
     padding: 3px 0;
+
 }
 
 .list-item__skills {
@@ -80,15 +84,6 @@
 
 .list-item__btn {
     flex-basis: 10%;
-}
-
-.spinner {
-    height: 200px;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 5rem;
 }
 
 
@@ -101,10 +96,11 @@
     color: var(--theme-pink);
 }
 
+
 .view-btn {
     /* background-color: var(--theme-pink); */
-    padding: 2px 5px;
-    border-radius: 1px;
+    padding: 2px 1rem;
+    border-radius: 10px;
     color: var(--theme-pink);
     border: 1px solid var(--theme-pink);
     transition: background-color 0.2s, color 0.2s ;
@@ -115,3 +111,4 @@
     background-color: var(--theme-pink);
     color: white;
 }
+

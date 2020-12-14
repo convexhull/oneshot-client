@@ -11,7 +11,7 @@ import classes from './CollegeFilter.module.css';
 
 
 //import components
-import ListView from '../UI/College/ListView/ListView';
+import ListView from '../UI/ListView/College/ListView';
 
 //import action creators
 import * as collegeActions from '../../store/colleges/actionCreators';

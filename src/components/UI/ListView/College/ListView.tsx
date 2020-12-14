@@ -3,7 +3,7 @@ import { connect, ConnectedProps } from "react-redux";
 import { RouteComponentProps, withRouter, Link } from "react-router-dom";
 
 /**
- * This component is for generating tabular/list view for collegesg
+ * This component is for generating tabular/list view for colleges
  * 
  */
 
@@ -45,6 +45,7 @@ type State = {
 }
 
 class ListView extends React.Component<AllProps, State>  {
+    
 
     btnClickHandler = (collegeId: string) => {
         this.props.history.push(`/college/${collegeId}`)
@@ -100,14 +101,13 @@ class ListView extends React.Component<AllProps, State>  {
                 <div className={classes["list-item"] + " " + classes["col-names"]}>
                     <p className={classes["list-item__srn"]}>Sr no.</p>
                     <p className={classes["list-item__name"]}>Name</p>
-                    <p className={classes["list-item__year"]}>Year Founded</p>
+                    <p className={classes["list-item__year"]}>Year Est.</p>
                     <p className={classes["list-item__skills"]}>Courses</p>
                     <p className={classes["list-item__btn"]}></p>
                 </div>
                 {collegesToRender}
             </div>
         );
-
         return (
             <div className={classes["Container"]}>
                 { this.props.loading ? spinner : listView}

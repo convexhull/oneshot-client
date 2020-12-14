@@ -8,7 +8,7 @@ import {
 import classes from './PieChart.module.css';
 
 
-const COLORS = ['#1abc9c', '#3498db', '#9b59b6', '#34495e', '#f1c40f', '#e67e22', '#95a5a6', '#e74c3c', '#474787'];
+const COLORS = ['#1abc9c', '#3498db', '#9b59b6', '#34495e', '#f1c40f', '#e67e22', '#95a5a6', '#e74c3c', '#474787', '#FC427B', '#D6A2E8'];
 
 type PropsFromParent = {
   data: {

@@ -23,8 +23,8 @@ import { RootState } from "../../store/store";
 
 
 //import components
-import StudentsList from "../../components/UI/Students/ListView/ListView";
-import CollegesList from "../../components/UI/College/ListView/ListView";
+import StudentsList from "../../components/UI/ListView/Students/ListView";
+import CollegesList from "../../components/UI/ListView/College/ListView";
 import Button from "../../components/UI/Button/Button";
 
 type PropsFromParents = {
@@ -59,7 +59,6 @@ type State = {
 }
 
 export class CollegeDetails extends React.Component<AllProps, State> {
-
     state = {
         showSimilarColleges: false
     }
@@ -82,6 +81,7 @@ export class CollegeDetails extends React.Component<AllProps, State> {
                 showSimilarColleges: !state.showSimilarColleges
             }
         })
+      
     }
 
     render() {
@@ -131,7 +131,7 @@ export class CollegeDetails extends React.Component<AllProps, State> {
                 <div className={classes["students-list"]}>
                     {this.state.showSimilarColleges ? <CollegesList type="similar" currentCollegeId={this.props.collegeDetails._id} value={this.props.collegeDetails.city} /> : null }
                 </div>
-                <div className={classes["students-list"]}>
+                <div  className={classes["students-list"]}>
                     <StudentsList students={this.props.collegeDetails.students} />
                 </div>
             </>

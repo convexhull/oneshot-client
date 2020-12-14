@@ -15,7 +15,7 @@ import { RootState } from "../../store/store";
 
 //iimport components
 import PieChart from '../../components/PieChart/PieChart';
-import CollegeStats from '../../components/CollegeFilter/CollegeFilter';
+import CollegeFilter from '../../components/CollegeFilter/CollegeFilter';
 
 type PropsFromParents = {
 
@@ -92,8 +92,8 @@ export class Dashboard extends React.Component<AllProps, State> {
                     </div>
                 </div>
                 <div ref={this.tableRef}>
-                    {this.state.showCoursewiseStats ? <CollegeStats type="course" value={this.state.filterCriteria} /> : null}
-                    {this.state.showStatewiseStats ? <CollegeStats type="state" value={this.state.filterCriteria} /> : null}
+                    {this.state.showCoursewiseStats ? <CollegeFilter type="course" value={this.state.filterCriteria} /> : null}
+                    {this.state.showStatewiseStats ? <CollegeFilter type="state" value={this.state.filterCriteria} /> : null}
                 </div>
 
             </div>

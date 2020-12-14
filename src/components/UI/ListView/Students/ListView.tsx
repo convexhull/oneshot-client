@@ -37,7 +37,7 @@ type State = {
 
 }
 
-class ListView extends React.Component<AllProps, State>  {
+export class ListView extends React.Component<AllProps, State>  {
 
 
     render() {

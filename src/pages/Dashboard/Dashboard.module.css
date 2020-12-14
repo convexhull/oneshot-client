@@ -42,8 +42,17 @@
 
 
 
-@media (max-width: 1200px) {
+@media (max-width: 1024px) {
     .piechart-container {
         flex-flow: column;
     }
+    .piechart-statewise {
+        margin-bottom: 3rem;
+    }
+}
+
+
+@media (max-width: 767px) {
+    
+    
 }
