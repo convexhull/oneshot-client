@@ -1,0 +1,22 @@
+.Container {
+    /* display: flex; */
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    background-color: var(--theme-pink);
+    padding: .5rem .5rem;
+}
+
+.Container a:visited , .Container a:link {
+    text-decoration: none;
+}
+
+.Container i:hover {
+    color: white;
+    transition: color 0.2s;
+}
+
+.Container span {
+    font-size: 2rem;
+    padding-left: 1rem;
+}

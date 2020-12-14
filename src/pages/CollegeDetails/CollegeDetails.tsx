@@ -104,21 +104,21 @@ export class CollegeDetails extends React.Component<AllProps, State> {
                         </div>
                     </div>
                     <div className={classes["college-description"]}>
-                        <p className={classes["college-description__year"]}>Year Founded: {this.props.collegeDetails.yearFounded}</p>
+                        <p className={classes["college-description__year"]}><span>Year Founded:</span> {this.props.collegeDetails.yearFounded}</p>
                         <div className={classes["college-description__other-info"]}>
                             <div className={classes["college-description__loc-info"]}>
                                 <p className={classes["college-description__location-text"]}>Location</p>
                                 <div className={classes["college-description__location"]}>
-                                    <p className={classes["college-description__city"]}>City: {this.props.collegeDetails.city}</p>
-                                    <p className={classes["college-description__state"]}>State: {this.props.collegeDetails.state}</p>
-                                    <p className={classes["college-description__country"]}>Country: {this.props.collegeDetails.country}</p>
+                                    <p className={classes["college-description__city"]}><span>City:</span> {this.props.collegeDetails.city}</p>
+                                    <p className={classes["college-description__state"]}><span>State:</span> {this.props.collegeDetails.state}</p>
+                                    <p className={classes["college-description__country"]}><span>Country:</span> {this.props.collegeDetails.country}</p>
                                 </div>
                             </div>
                             <div className={classes["college-description__courses-info"]}>
                                 <p className={classes["college-description__courses-text"]}>Courses</p>
                                 <div className={classes["college-description__courses"]}>
                                     {this.props.collegeDetails.courses.map((course) => (
-                                        <p className={classes["college-description__course"]}>{course}</p>
+                                        <p className={classes["college-description__course"]}><span><i className="fas fa-check"></i></span>{course}</p>
                                     ))}
                                 </div>
                             </div>
@@ -129,7 +129,7 @@ export class CollegeDetails extends React.Component<AllProps, State> {
                     </div>
                 </div>
                 <div className={classes["students-list"]}>
-                    {this.state.showSimilarColleges ? <CollegesList type="similar" value={this.props.collegeDetails.city} /> : null }
+                    {this.state.showSimilarColleges ? <CollegesList type="similar" currentCollegeId={this.props.collegeDetails._id} value={this.props.collegeDetails.city} /> : null }
                 </div>
                 <div className={classes["students-list"]}>
                     <StudentsList students={this.props.collegeDetails.students} />

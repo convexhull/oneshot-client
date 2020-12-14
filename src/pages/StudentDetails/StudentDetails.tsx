@@ -79,15 +79,16 @@ export class StudentDetails extends React.Component<AllProps, State> {
                     <h1 className={classes["profile-info__name"]}>
                         {this.props.studentDetails.name}
                     </h1>
-                    <h3 className={classes["profile-info__college"]}>Name of College: {this.props.studentDetails.college[0] && this.props.studentDetails.college[0].name}</h3>
-                    <h3 className={classes["profile-info__year"]}>Year of Batch: {this.props.studentDetails.yearOfBatch}</h3>
-                    <h3 className={classes["profile-info__skills"]}>Skills: {this.props.studentDetails.skills.join(', ')}</h3>
+                    <h3 className={classes["profile-info__college"]}><span>Name of College:</span> {this.props.studentDetails.college[0] && this.props.studentDetails.college[0].name}</h3>
+                    <h3 className={classes["profile-info__year"]}><span>Year of Batch:</span> {this.props.studentDetails.yearOfBatch}</h3>
+                    <h3 className={classes["profile-info__skills"]}><span>Skills:</span> {this.props.studentDetails.skills.join(', ')}</h3>
                 </div>
             </>
         )
 
         return (
             <div className={classes["Profile"]}>
+                
                 <div className={classes["profile-info"]}>
                     {this.props.loading ? spinner : studentDetails }
                 </div>

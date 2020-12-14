@@ -1,5 +1,7 @@
 .Container {
     width: 100%;
+    margin-top: 10rem;
+    margin-bottom: 5rem;
 }
 
 .title {
@@ -8,31 +10,33 @@
     margin: 2rem 0;
 }
 
-
 .piechart-container {
     display: flex;
-    margin: 0 auto;
-    background-color: #ddd;
+    margin: 0 auto 7rem auto;
     justify-content: center;
     align-items: center;
-    text-align: center;
     overflow-x: auto;
 }
 
-
 .piechart-statewise {
-    flex-basis: 50%;
-    background-color: #ccc;
+    display: flex;
+    justify-content: center;
+    flex-basis: 40%;
+    margin: 0 auto;
+    border-radius: 10px;
+    border: .5px solid rgba(0,0,0,0.6);
+    box-shadow: 1px 1px 10px 1px rgba(0,0,0,0.6);
 }
-
 
 .piechart-coursewise {
-    flex-basis: 50%;
+    display: flex;
+    justify-content: center;
+    flex-basis: 40%;
+    margin: 0 auto;
+    border-radius: 10px;
+    border: .5px solid rgba(0,0,0,0.6);
+    box-shadow: 1px 1px 10px 1px rgba(0,0,0,0.6);
 }
-
-
-
-
 
 
 

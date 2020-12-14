@@ -1,5 +1,6 @@
 .btn {
-    border: 2.5px solid black;
+    border: 2.5px solid var(--theme-pink);
+    color: var(--theme-pink);
     border-radius: 25px;
     text-align: center;
     padding: 12.5px 20px;
@@ -13,7 +14,7 @@
 
 
 .btn:hover {
-    background-color: var(--primary-purple);
+    background-color: var(--theme-pink);
     color: white;
     cursor: pointer;
 }

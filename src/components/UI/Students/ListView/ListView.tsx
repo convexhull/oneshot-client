@@ -45,10 +45,10 @@ class ListView extends React.Component<AllProps, State>  {
         let studentsToRender = this.props.students.map((student, idx) => (
             <div className={classes["list-item"]}>
                 <p className={classes["list-item__srn"]}>{idx+1}</p>
-                <p className={classes["list-item__name"]}>{student.name}</p>
+                <p className={classes["list-item__name"]}><Link to={`/student/${student._id}`}><p>{student.name}</p></Link></p>
                 <p className={classes["list-item__year"]}>{student.yearOfBatch}</p>
                 <p className={classes["list-item__skills"]}>{student.skills.join(', ')}</p>
-                <Link to={`/student/${student._id}`}><p>View</p></Link>
+                <Link to={`/student/${student._id}`}><p className={classes["view-btn"]}>View</p></Link>
             </div>
         ))
 

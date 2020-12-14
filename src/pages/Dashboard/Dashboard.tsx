@@ -73,13 +73,16 @@ export class Dashboard extends React.Component<AllProps, State> {
                 filterCriteria: value
             }
         })
+    }
+
+    componentDidUpdate() {
         this.tableRef.current?.scrollIntoView();
     }
 
     render() {
         return (
             <div className={classes["Container"]}>
-                <h1 className={classes["title"]}>Statewise & Coursewise Distribution of Colleges</h1>
+                <h1 className={classes["title"]}>Statewise & Coursewise distribution of colleges(%)</h1>
                 <div className={classes["piechart-container"]}>
                     <div className={classes["piechart-statewise"]}>
                         <PieChart data={this.props.statewiseStats && this.props.statewiseStats} type="state" sectorClicked={this.piechartClickHandler} />

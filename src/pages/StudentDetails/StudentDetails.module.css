@@ -5,6 +5,7 @@
     justify-content: center;
     align-items: center;
     background-color: #fff;
+    letter-spacing: 0.1rem;
 }
 
 
@@ -20,7 +21,7 @@
 
 
 .profile-info__profile-pic {
-    height: 10rem;
+    height: 11rem;
     width: auto;
     max-width: 10rem;
     border-radius: 50%;
@@ -39,7 +40,12 @@
     flex-basis: auto;
     margin-left: 1rem;
 }
+
+.profile-info__name-bio span {
+    color: var(--theme-pink); 
+}
 .profile-info__name {
+    color: var(--theme-pink);
 }
 
 .profile-info__college {

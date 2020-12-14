@@ -7,7 +7,6 @@
 .college-info {
     width: 80%;
     margin: 1rem auto 7.5rem auto;
-    background-color: #55efc4;
     box-shadow: 1px 1px 15px 1px rgba(0,0,0,0.6) ;
     border-radius: 10px;
 }
@@ -80,6 +79,10 @@
     text-align: center;
 }
 
+.college-description__year span {
+    color: var(--theme-pink);
+}
+
 
 .college-description__other-info {
     display: flex;
@@ -93,12 +96,20 @@
 .college-description__location {
     border-radius: 10px;
     padding: 2rem 3rem;
-    box-shadow: 1px 1px 10px #be2edd;
+    box-shadow: 1px 1px 10px rgba(0,0,0,0.6);
 
 }
+
+
+.college-description__location span {
+    color: var(--theme-pink);
+}
+
 .college-description__location-text {
     text-align: center;
     font-size: 2rem;
+    color: var(--theme-pink);
+    font-weight: 500;
 }
 
 .college-description__courses-info {
@@ -106,18 +117,27 @@
 }
 
 .college-description__courses {
-    border: 1px solid black;
+    box-shadow: 1px 1px 10px rgba(0,0,0,0.6);
+    border-radius: 10px;
     padding: 2rem 3rem;
 }
 
 .college-description__courses-text {
     font-size: 2rem;
+    text-align: center;
+    color: var(--theme-pink);
+    font-weight: 500;
 }
 
 .college-description__course {
-    margin-bottom: 2rem;
+    /* margin-bottom: 2rem; */
+    margin: 1rem 0;
 }
 
+.college-description__course span {
+    color: var(--theme-pink);
+    padding-right: 1rem;
+}
 
 .main-spinner {
     width: 100%;

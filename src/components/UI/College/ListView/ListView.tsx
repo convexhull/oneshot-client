@@ -30,7 +30,10 @@ const connector = connect(mapStateToProps);
 
 type PropsFromParents = {
     type: string,
-    value: string
+    value: string,
+
+    //current collegeId is optional and required for not displaying the current college in list of similar colleges
+    currentCollegeId?: string
 }
 
 type PropsFromRedux = ConnectedProps<typeof connector>;
@@ -48,31 +51,42 @@ class ListView extends React.Component<AllProps, State>  {
     }
 
     render() {
+        //fileredColleges removes the current colleges from similar college list
+        let filteredColleges = this.props.colleges.filter((college) => college._id !== this.props.currentCollegeId);
         let spinner = (
             <div className={classes["spinner"]}>
                 <img src={Spinner} alt="spinner" />
             </div>
-        )
-
-        let collegesToRender = this.props.colleges.map((college, idx) => (
-            <div className={classes["list-item"]}>
-                <p className={classes["list-item__srn"]}>{idx + 1}</p>
-                <p className={classes["list-item__name"]}>{college.name}</p>
-                <p className={classes["list-item__year"]}>{college.yearFounded}</p>
-                <p className={classes["list-item__skills"]}>{college.courses.join(', ')}</p>
-                <Link to={`/college/${college._id}`}><p>View</p></Link>
-            </div>
-        ))
+        );
+        let collegesToRender: React.ReactNode = null;
+        if (!filteredColleges.length) {
+            //if no similar college
+            collegesToRender = (
+                <div className={classes["list-item"]}>
+                    <p>No similar colleges found</p>
+                </div>
+            )
+        } else {
+            collegesToRender = filteredColleges.map((college, idx) => (
+                <div className={classes["list-item"]}>
+                    <p className={classes["list-item__srn"]}>{idx + 1}</p>
+                    <p className={classes["list-item__name"]}><Link to={`/college/${college._id}`}><p>{college.name}</p></Link></p>
+                    <p className={classes["list-item__year"]}>{college.yearFounded}</p>
+                    <p className={classes["list-item__skills"]}>{college.courses.join(', ')}</p>
+                    <Link to={`/college/${college._id}`}><p className={classes["view-btn"]}>View</p></Link>
+                </div>
+            ))
+        }
         let tableTitle = "";
-        if(this.props.type === "similar"){
+        if (this.props.type === "similar") {
             tableTitle = "Similar colleges";
         } else {
             tableTitle = "Filtered list of colleges";
         }
         let tableSubtitle = "";
-        if(this.props.type === "state"){
+        if (this.props.type === "state") {
             tableSubtitle = `List of colleges in ${this.props.value}`;
-        } else if(this.props.type === "course") {
+        } else if (this.props.type === "course") {
             tableSubtitle = `List of colleges offering the course: ${this.props.value}`;
         } else {
             tableSubtitle = "Similar colleges in the same locality";
@@ -96,9 +110,8 @@ class ListView extends React.Component<AllProps, State>  {
 
         return (
             <div className={classes["Container"]}>
-                { this.props.loading ? spinner : listView }
+                { this.props.loading ? spinner : listView}
             </div>
-
         )
     }
 }

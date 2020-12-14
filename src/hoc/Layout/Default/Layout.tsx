@@ -12,7 +12,9 @@ import Header from '../../../components/Header/Header';
 const Layout = (props: {children: JSX.Element}) => {
     return (
         <div className={classes["Container"]}>
-            <Header />
+            <div  className={classes["header"]}>
+                <Header />
+            </div>
             {props.children}
         </div>
     )
