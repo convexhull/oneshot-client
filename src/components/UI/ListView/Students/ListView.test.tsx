@@ -31,5 +31,5 @@ describe("<ListView />", () => {
         expect(queryByText("Students")).toBeInTheDocument();
         expect(queryByText("Detailed list of students")).toBeInTheDocument();
     })
-    
+
 })

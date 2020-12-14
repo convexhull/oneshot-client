@@ -17,12 +17,12 @@ describe("Redux: 'students' action creators", () => {
 
         it("should create FETCH_STUDENT_DETAILS_SUCCESS action", () => {
             const testPayload = {
-                _id: 'test-id',
-                name: 'test-name',
+                _id: "test-id",
+                name: "test-name",
                 yearOfBatch: 10,
                 skills: ["s1", "s2"],
-                college: ["c1", "c2"]
-            }
+                college: ["c1", "c2"],
+            };
             const expectedAction = {
                 type: "FETCH_STUDENT_DETAILS_SUCCESS",
                 payload: testPayload,
@@ -49,12 +49,12 @@ describe("Redux: 'students' action creators", () => {
 
         it("should start fetching student details and create FETCH_STUDENT_DETAILS_SUCCESS action when fetched successfully", async () => {
             const mockResponse = {
-                _id: 'test-id',
-                name: 'test-name',
+                _id: "test-id",
+                name: "test-name",
                 yearOfBatch: 10,
                 skills: ["s1", "s2"],
-                college: ["c1", "c2"]
-            }
+                college: ["c1", "c2"],
+            };
             const expectedActions = [
                 {
                     type: "FETCH_STUDENT_DETAILS_START",
@@ -64,7 +64,9 @@ describe("Redux: 'students' action creators", () => {
                     payload: mockResponse,
                 },
             ];
-            axiosInstance.get.mockResolvedValue({ data: {data :  mockResponse }});
+            axiosInstance.get.mockResolvedValue({
+                data: { data: mockResponse },
+            });
             const middlewares = [Thunk];
             const mockStore = configureMockStore(middlewares);
             const store = mockStore({});

@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect, ConnectedProps } from "react-redux";
-import { RouteComponentProps, withRouter, Link } from "react-router-dom";
+import { RouteComponentProps, withRouter } from "react-router-dom";
 
 /**
  * This component displays the details of the selected student
+ * 
  */
 
 //import styles
@@ -55,6 +56,7 @@ type State = {
 export class StudentDetails extends React.Component<AllProps, State> {
 
     componentDidMount() {
+        //get studentId from the route param
         let studentId = this.props.match.params.studentId;
         this.props.onLoadStudentDetails(studentId);
     }
@@ -72,7 +74,7 @@ export class StudentDetails extends React.Component<AllProps, State> {
                 <div className={classes["profile-info__profile-pic"]}>
                     <img
                         src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909__480.png"
-                        alt="user's dp"
+                        alt="user's placeholder dp"
                     />
                 </div>
                 <div className={classes["profile-info__name-bio"]}>
@@ -85,12 +87,10 @@ export class StudentDetails extends React.Component<AllProps, State> {
                 </div>
             </>
         )
-
         return (
             <div className={classes["Profile"]}>
-                
                 <div className={classes["profile-info"]}>
-                    {this.props.loading ? spinner : studentDetails }
+                    {this.props.loading ? spinner : studentDetails}
                 </div>
             </div>
         )

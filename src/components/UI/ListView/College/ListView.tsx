@@ -4,7 +4,7 @@ import { RouteComponentProps, withRouter, Link } from "react-router-dom";
 
 /**
  * This component is for generating tabular/list view for colleges
- * 
+ * # Its imported into <CollegeDetails /> and <CollegeFilter /> for displaying fetched clgs in tabular form
  */
 
 
@@ -29,10 +29,12 @@ const mapStateToProps = (state: RootState) => {
 const connector = connect(mapStateToProps);
 
 type PropsFromParents = {
+    //type can take values "state", "course" or "similar". Its essentially used for deciding if list-view is for statewise/coursewise/similar colleges
     type: string,
+    //value can be name of any state or course. Needed when type== "state" or "course"
     value: string,
 
-    //current collegeId is optional and required for not displaying the current college in list of similar colleges
+    //current collegeId is used when type == "similar" and required for filtering out the current college in list of similar colleges
     currentCollegeId?: string
 }
 
@@ -45,7 +47,7 @@ type State = {
 }
 
 class ListView extends React.Component<AllProps, State>  {
-    
+
 
     btnClickHandler = (collegeId: string) => {
         this.props.history.push(`/college/${collegeId}`)
@@ -69,7 +71,7 @@ class ListView extends React.Component<AllProps, State>  {
             )
         } else {
             collegesToRender = filteredColleges.map((college, idx) => (
-                <div className={classes["list-item"]}>
+                <div key={college._id} className={classes["list-item"]}>
                     <p className={classes["list-item__srn"]}>{idx + 1}</p>
                     <p className={classes["list-item__name"]}><Link to={`/college/${college._id}`}><p>{college.name}</p></Link></p>
                     <p className={classes["list-item__year"]}>{college.yearFounded}</p>
@@ -78,13 +80,15 @@ class ListView extends React.Component<AllProps, State>  {
                 </div>
             ))
         }
+
+        //Following if-else block is used for setting title and subtitle for the list-view/table. 
         let tableTitle = "";
+        let tableSubtitle = "";
         if (this.props.type === "similar") {
             tableTitle = "Similar colleges";
         } else {
             tableTitle = "Filtered list of colleges";
         }
-        let tableSubtitle = "";
         if (this.props.type === "state") {
             tableSubtitle = `List of colleges in ${this.props.value}`;
         } else if (this.props.type === "course") {
@@ -92,6 +96,7 @@ class ListView extends React.Component<AllProps, State>  {
         } else {
             tableSubtitle = "Similar colleges in the same locality";
         }
+
         let listView = (
             <div className={classes["colleges-list"]}>
                 <div className={classes["list-description"]}>

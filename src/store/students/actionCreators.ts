@@ -2,15 +2,11 @@ import { ThunkAction } from "redux-thunk";
 import { Action } from "redux";
 import { RootState } from "../store";
 
-
 //import types
 import { Student } from "./types";
 
-
 //import the axios instance with baseURL set to backend
 import Axios from "../../axios/axios";
-
-
 
 /**
  * Action creators for fetching student details
@@ -36,16 +32,15 @@ export const fetchStudentDetailsFailure = (payload: { message: string }) => {
     };
 };
 
-export const asyncFetchStudentDetailsStart = (studentId: string): ThunkAction<
-    void,
-    RootState,
-    unknown,
-    Action<string>
-> => {
+export const asyncFetchStudentDetailsStart = (
+    studentId: string
+): ThunkAction<void, RootState, unknown, Action<string>> => {
     return async (dispatch) => {
         dispatch(fetchStudentDetailsStart());
         try {
-            let apiResponse = await Axios.get(`/students/details?id=${studentId}`);
+            let apiResponse = await Axios.get(
+                `/students/details?id=${studentId}`
+            );
             let apiResponseData: Student = apiResponse.data.data;
             dispatch(fetchStudentDetailsSuccess(apiResponseData));
         } catch (e) {
@@ -53,4 +48,3 @@ export const asyncFetchStudentDetailsStart = (studentId: string): ThunkAction<
         }
     };
 };
-

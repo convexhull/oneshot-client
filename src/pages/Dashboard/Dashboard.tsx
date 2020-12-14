@@ -1,6 +1,13 @@
 import React from 'react';
 import { connect, ConnectedProps } from "react-redux";
-import { Link, Route, RouteComponentProps } from "react-router-dom";
+import { RouteComponentProps } from "react-router-dom";
+
+
+/**
+ * This is the Home/Dashboard page. Rendered for "/" route 
+ * # It used <Piechart /> to display pie-chart on initial rendering. 
+ * # When user clicks a sector of the pie-chart, it uses <CollegeFilter /> to display filtered list of colleges
+ */
 
 //import styles
 import classes from './Dashboard.module.css';
@@ -49,7 +56,9 @@ type State = {
 }
 
 export class Dashboard extends React.Component<AllProps, State> {
+    //tableRef is used to scrollIntoView() the table when filterd colleges are displayed. 
     tableRef: React.RefObject<HTMLInputElement>;
+
     constructor(props: AllProps) {
         super(props);
         this.state = {
@@ -61,11 +70,13 @@ export class Dashboard extends React.Component<AllProps, State> {
     }
 
     componentDidMount() {
+        //For rendering pie-chart based on the info
         this.props.onLoadStateWiseInfo();
         this.props.onLoadCourseWiseInfo();
     }
 
     piechartClickHandler = (filterBy: string, value: string) => {
+        //When piechart clicked, the <CollegeFilter /> component renders a filtered list of colleges based on which sector clicked
         this.setState((state) => {
             return {
                 showStatewiseStats: (filterBy === "state" ? true : false),
@@ -76,6 +87,7 @@ export class Dashboard extends React.Component<AllProps, State> {
     }
 
     componentDidUpdate() {
+        //scroll and bring to view the list of filtered colleges
         this.tableRef.current?.scrollIntoView();
     }
 
@@ -95,11 +107,9 @@ export class Dashboard extends React.Component<AllProps, State> {
                     {this.state.showCoursewiseStats ? <CollegeFilter type="course" value={this.state.filterCriteria} /> : null}
                     {this.state.showStatewiseStats ? <CollegeFilter type="state" value={this.state.filterCriteria} /> : null}
                 </div>
-
             </div>
         )
     }
 }
-
 
 export default connector(Dashboard);

@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 
 import classes from './Button.module.css';
 
+/**
+ * Customizable <Button /> component
+ */
 
 type PropsFromParent = {
     children: React.ReactNode;
@@ -18,7 +20,7 @@ class Button extends Component<AllProps> {
         let btnClasses = [classes["btn"]];
         btnClasses.push(classes["btn--white"]);
         return (
-           <button onClick={this.props.clicked} className={btnClasses.join(' ')} >{this.props.children}</button>
+            <button onClick={this.props.clicked} className={btnClasses.join(' ')} >{this.props.children}</button>
         );
     }
 }

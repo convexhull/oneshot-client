@@ -51,7 +51,7 @@ const reducer: Reducer<CollegeState, AllActions> = (
         case "FETCH_SIMILAR_COLLEGES_SUCCESS":
             return {
                 ...state,
-                fetchedColleges: action.payload
+                fetchedColleges: action.payload,
             };
         default:
             return state;

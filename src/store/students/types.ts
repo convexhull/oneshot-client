@@ -1,9 +1,9 @@
-import { College } from "../colleges/types"
+import { College } from "../colleges/types";
 
 //type for student state slice of store
 export type StudentState = {
-    fetchedStudent: Student
-}
+    fetchedStudent: Student;
+};
 
 export type Student = {
     _id: string;
@@ -11,8 +11,8 @@ export type Student = {
     yearOfBatch: number;
     college_id?: string;
     skills: string[];
-    college: College[]
-}
+    college: College[];
+};
 
 /**
  * TYPES FOR FETCHING STUDENT DETAILS
@@ -24,7 +24,7 @@ export type FetchStudentDetailsStartAction = {
 
 export type FetchStudentDetailsSuccessAction = {
     type: "FETCH_STUDENT_DETAILS_SUCCESS";
-    payload: Student
+    payload: Student;
 };
 
 export type FetchStudentDetailsFailureAction = {
@@ -39,7 +39,4 @@ export type FetchStudentDetailsActions =
     | FetchStudentDetailsSuccessAction
     | FetchStudentDetailsFailureAction;
 
-
-
-export type AllActions = 
-    | FetchStudentDetailsActions;
+export type AllActions = FetchStudentDetailsActions;

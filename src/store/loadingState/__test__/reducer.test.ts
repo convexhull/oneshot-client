@@ -9,7 +9,7 @@ describe("Redux: loadingState reducer", () => {
             FILTER_COLLEGES: false,
             FETCH_COLLEGE_DETAILS: false,
             FETCH_STUDENT_DETAILS: false,
-            FETCH_SIMILAR_COLLEGES: false
+            FETCH_SIMILAR_COLLEGES: false,
         };
         expect(reducer(undefined, {})).toEqual(initState);
     });
@@ -22,7 +22,7 @@ describe("Redux: loadingState reducer", () => {
             FILTER_COLLEGES: false,
             FETCH_COLLEGE_DETAILS: false,
             FETCH_STUDENT_DETAILS: false,
-            FETCH_SIMILAR_COLLEGES: false
+            FETCH_SIMILAR_COLLEGES: false,
         };
         const action = {
             type: "FETCH_COLLEGE_DETAILS_START",
@@ -34,7 +34,7 @@ describe("Redux: loadingState reducer", () => {
             FILTER_COLLEGES: false,
             FETCH_COLLEGE_DETAILS: true,
             FETCH_STUDENT_DETAILS: false,
-            FETCH_SIMILAR_COLLEGES: false
+            FETCH_SIMILAR_COLLEGES: false,
         };
 
         expect(reducer(initState, action)).toEqual(expectedState);
@@ -48,7 +48,7 @@ describe("Redux: loadingState reducer", () => {
             FILTER_COLLEGES: false,
             FETCH_COLLEGE_DETAILS: false,
             FETCH_STUDENT_DETAILS: false,
-            FETCH_SIMILAR_COLLEGES: false
+            FETCH_SIMILAR_COLLEGES: false,
         };
         const action = {
             type: "FETCH_STATEWISE_STATS_SUCCESS",
@@ -60,7 +60,7 @@ describe("Redux: loadingState reducer", () => {
             FILTER_COLLEGES: false,
             FETCH_COLLEGE_DETAILS: false,
             FETCH_STUDENT_DETAILS: false,
-            FETCH_SIMILAR_COLLEGES: false
+            FETCH_SIMILAR_COLLEGES: false,
         };
 
         expect(reducer(initState, action)).toEqual(expectedState);
@@ -74,7 +74,7 @@ describe("Redux: loadingState reducer", () => {
             FILTER_COLLEGES: false,
             FETCH_COLLEGE_DETAILS: false,
             FETCH_STUDENT_DETAILS: true,
-            FETCH_SIMILAR_COLLEGES: true
+            FETCH_SIMILAR_COLLEGES: true,
         };
         const action = {
             type: "FETCH_STUDENT_DETAILS_FAILURE",
@@ -86,7 +86,7 @@ describe("Redux: loadingState reducer", () => {
             FILTER_COLLEGES: false,
             FETCH_COLLEGE_DETAILS: false,
             FETCH_STUDENT_DETAILS: false,
-            FETCH_SIMILAR_COLLEGES: true
+            FETCH_SIMILAR_COLLEGES: true,
         };
 
         expect(reducer(initState, action)).toEqual(expectedState);
@@ -100,7 +100,7 @@ describe("Redux: loadingState reducer", () => {
             FILTER_COLLEGES: false,
             FETCH_COLLEGE_DETAILS: false,
             FETCH_STUDENT_DETAILS: false,
-            FETCH_SIMILAR_COLLEGES: false
+            FETCH_SIMILAR_COLLEGES: false,
         };
         const action = {
             type: "SOME_RANDOM_ACTION",
@@ -112,7 +112,7 @@ describe("Redux: loadingState reducer", () => {
             FILTER_COLLEGES: false,
             FETCH_COLLEGE_DETAILS: false,
             FETCH_STUDENT_DETAILS: false,
-            FETCH_SIMILAR_COLLEGES: false
+            FETCH_SIMILAR_COLLEGES: false,
         };
 
         expect(reducer(initState, action)).toEqual(expectedState);

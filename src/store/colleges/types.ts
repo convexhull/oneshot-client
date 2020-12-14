@@ -1,9 +1,6 @@
 //import other types
 import { Student } from "../students/types";
 
-
-
-
 /**
  * Type for colleges slice of the app state
  */
@@ -17,18 +14,17 @@ export type College = {
     country: string;
     courses: string[];
     student_ids: string[];
-}
+};
 
 export type StatewiseStat = {
     name: string;
     value: number;
-}
-
+};
 
 export type CoursewiseStat = {
     name: string;
-    value: number
-}
+    value: number;
+};
 
 export type CollegeDetails = {
     _id: string;
@@ -38,17 +34,15 @@ export type CollegeDetails = {
     state: string;
     country: string;
     courses: string[];
-    students: Student[]
-}
-
+    students: Student[];
+};
 
 export type CollegeState = {
     fetchedColleges: College[];
     statewiseStats: StatewiseStat[];
     fetchedCollegeDetails: CollegeDetails;
-    coursewiseStats: CoursewiseStat[]
+    coursewiseStats: CoursewiseStat[];
 };
-
 
 /**
  * TYPES FOR FETCHING ALL COLLEGES
@@ -75,12 +69,9 @@ export type FetchAllCollegesActions =
     | FetchAllCollegesSuccessAction
     | FetchAllCollegesFailureAction;
 
-
-
 /**
  * TYPES FOR FETCHING STATEWISE STATS
  */
-
 
 export type FetchStatewiseStatsStartAction = {
     type: "FETCH_STATEWISE_STATS_START";
@@ -88,7 +79,7 @@ export type FetchStatewiseStatsStartAction = {
 
 export type FetchStatewiseStatsSuccessAction = {
     type: "FETCH_STATEWISE_STATS_SUCCESS";
-    payload: StatewiseStat[]
+    payload: StatewiseStat[];
 };
 
 export type FetchStatewiseStatsFailureAction = {
@@ -107,14 +98,13 @@ export type FetchStatewiseStatsActions =
  * TYPES FOR FETCHING COURSEWISE STATS
  */
 
-
 export type FetchCoursewiseStatsStartAction = {
     type: "FETCH_COURSEWISE_STATS_START";
 };
 
 export type FetchCoursewiseStatsSuccessAction = {
     type: "FETCH_COURSEWISE_STATS_SUCCESS";
-    payload: CoursewiseStat[]
+    payload: CoursewiseStat[];
 };
 
 export type FetchCoursewiseStatsFailureAction = {
@@ -130,9 +120,8 @@ export type FetchCoursewiseStatsActions =
     | FetchCoursewiseStatsFailureAction;
 
 /**
- * TYPES FOR FILTERING COLLEGES 
+ * TYPES FOR FILTERING COLLEGES
  */
-
 
 export type filterCollegesStartAction = {
     type: "FILTER_COLLEGES_START";
@@ -140,7 +129,7 @@ export type filterCollegesStartAction = {
 
 export type filterCollegesSuccessAction = {
     type: "FILTER_COLLEGES_SUCCESS";
-    payload: College[]
+    payload: College[];
 };
 
 export type filterCollegesFailureAction = {
@@ -150,21 +139,14 @@ export type filterCollegesFailureAction = {
     };
 };
 
-
 export type FilterCollegesActions =
     | filterCollegesStartAction
     | filterCollegesSuccessAction
     | filterCollegesFailureAction;
 
-
-
 /**
  * TYPES FOR FETCHING COLLEGE DETAILS
  */
-
-
-
-
 
 export type FetchCollegeDetailsStartAction = {
     type: "FETCH_COLLEGE_DETAILS_START";
@@ -172,7 +154,7 @@ export type FetchCollegeDetailsStartAction = {
 
 export type FetchCollegeDetailsSuccessAction = {
     type: "FETCH_COLLEGE_DETAILS_SUCCESS";
-    payload: CollegeDetails
+    payload: CollegeDetails;
 };
 
 export type FetchCollegeDetailsFailureAction = {
@@ -182,20 +164,14 @@ export type FetchCollegeDetailsFailureAction = {
     };
 };
 
-
 export type FetchCollegeDetailsActions =
     | FetchCollegeDetailsStartAction
     | FetchCollegeDetailsSuccessAction
     | FetchCollegeDetailsFailureAction;
 
-
-
-
-
 /**
  * TYPES FOR FETCHING SIMILAR COLLEGES
  */
-
 
 export type FetchSimilarCollegesStartAction = {
     type: "FETCH_SIMILAR_COLLEGES_START";
@@ -203,7 +179,7 @@ export type FetchSimilarCollegesStartAction = {
 
 export type FetchSimilarCollegesSuccessAction = {
     type: "FETCH_SIMILAR_COLLEGES_SUCCESS";
-    payload: College[]
+    payload: College[];
 };
 
 export type FetchSimilarCollegesFailureAction = {
@@ -212,7 +188,6 @@ export type FetchSimilarCollegesFailureAction = {
         message: string;
     };
 };
-
 
 export type FetchSimilarCollegesActions =
     | FetchSimilarCollegesStartAction
@@ -225,4 +200,4 @@ export type AllActions =
     | FetchCoursewiseStatsActions
     | FilterCollegesActions
     | FetchCollegeDetailsActions
-    | FetchSimilarCollegesActions
+    | FetchSimilarCollegesActions;

@@ -4,6 +4,7 @@ import { RouteComponentProps, withRouter, Link } from "react-router-dom";
 
 /**
  * This component is for generating tabular/list view for students
+ * # Its imported into <CollgeDetails /> for displaying list of students.
  */
 
 
@@ -43,8 +44,8 @@ export class ListView extends React.Component<AllProps, State>  {
     render() {
 
         let studentsToRender = this.props.students.map((student, idx) => (
-            <div className={classes["list-item"]}>
-                <p className={classes["list-item__srn"]}>{idx+1}</p>
+            <div key={student._id} className={classes["list-item"]}>
+                <p className={classes["list-item__srn"]}>{idx + 1}</p>
                 <p className={classes["list-item__name"]}><Link to={`/student/${student._id}`}><p>{student.name}</p></Link></p>
                 <p className={classes["list-item__year"]}>{student.yearOfBatch}</p>
                 <p className={classes["list-item__skills"]}>{student.skills.join(', ')}</p>

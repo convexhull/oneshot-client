@@ -10,7 +10,7 @@ const initState: LoadingState = {
     FILTER_COLLEGES: false,
     FETCH_COLLEGE_DETAILS: false,
     FETCH_STUDENT_DETAILS: false,
-    FETCH_SIMILAR_COLLEGES: false
+    FETCH_SIMILAR_COLLEGES: false,
 };
 
 const loadingReducer: Reducer<LoadingState, AllActions> = (
@@ -29,8 +29,8 @@ const loadingReducer: Reducer<LoadingState, AllActions> = (
     return {
         ...state,
         // Store whether a request is happening at the moment or not
-        // e.g. will be true when receiving FETCH_GAME_INFO_START
-        //      and false when receiving FETCH_GAME_INFO_SUCCESS / FETCH_GAME_INFO_FAILURE
+        // e.g. will be true when receiving FETCH_COLLEGE_DETAILS_START
+        //      and false when receiving FETCH_COLLEGE_DETAILS_SUCCESS / FETCH_COLLEGE_DETAILS_FAILURE
         [requestName]: requestState === "START",
     };
 };

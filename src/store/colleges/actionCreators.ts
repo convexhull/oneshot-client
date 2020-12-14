@@ -64,14 +64,14 @@ export const fetchStatewiseStatsStart = () => {
 export const fetchStatewiseStatsSuccess = (payload: StatewiseStat[]) => {
     return {
         type: "FETCH_STATEWISE_STATS_SUCCESS",
-        payload: payload
+        payload: payload,
     };
 };
 
-export const fetchStatewiseStatsFailure= (payload: { message : string}) => {
+export const fetchStatewiseStatsFailure = (payload: { message: string }) => {
     return {
         type: "FETCH_STATEWISE_STATS_FAILURE",
-        payload: payload
+        payload: payload,
     };
 };
 
@@ -93,7 +93,6 @@ export const asyncFetchStatewiseStatsStart = (): ThunkAction<
     };
 };
 
-
 /**
  * Action creators for coursewise-stats
  */
@@ -107,14 +106,14 @@ export const fetchCoursewiseStatsStart = () => {
 export const fetchCoursewiseStatsSuccess = (payload: CoursewiseStat[]) => {
     return {
         type: "FETCH_COURSEWISE_STATS_SUCCESS",
-        payload: payload
+        payload: payload,
     };
 };
 
-export const fetchCoursewiseStatsFailure= (payload: { message : string}) => {
+export const fetchCoursewiseStatsFailure = (payload: { message: string }) => {
     return {
         type: "FETCH_COURSEWISE_STATS_FAILURE",
-        payload: payload
+        payload: payload,
     };
 };
 
@@ -136,11 +135,9 @@ export const asyncfetchCoursewiseStatsStart = (): ThunkAction<
     };
 };
 
-
 /**
  * Actions creators for filtering colleges
  */
-
 
 export const filterCollegesStart = () => {
     return {
@@ -148,30 +145,24 @@ export const filterCollegesStart = () => {
     };
 };
 
-export const filterCollegesSuccess = (
-    payload: College[]
-) => {
+export const filterCollegesSuccess = (payload: College[]) => {
     return {
         type: "FILTER_COLLEGES_SUCCESS",
         payload: payload,
     };
 };
 
-export const filterCollegesFailure = (payload: {
-    message: string;
-}) => {
+export const filterCollegesFailure = (payload: { message: string }) => {
     return {
         type: "FILTER_COLLEGES_FAILURE",
         payload: payload,
     };
 };
 
-export const asyncFilterCollegesStart = (criteria: string, value : string): ThunkAction<
-    void,
-    RootState,
-    unknown,
-    Action<string>
-> => {
+export const asyncFilterCollegesStart = (
+    criteria: string,
+    value: string
+): ThunkAction<void, RootState, unknown, Action<string>> => {
     return async (dispatch) => {
         dispatch(filterCollegesStart());
         let queryString = `/colleges/filter?${criteria}=${value}`;
@@ -189,13 +180,9 @@ export const asyncFilterCollegesStart = (criteria: string, value : string): Thun
     };
 };
 
-
-
-
 /**
  * Actions creators for fetching college details
  */
-
 
 export const fetchCollegeDetailsStart = () => {
     return {
@@ -203,30 +190,23 @@ export const fetchCollegeDetailsStart = () => {
     };
 };
 
-export const fetchCollegeDetailsSuccess = (
-    payload: CollegeDetails
-) => {
+export const fetchCollegeDetailsSuccess = (payload: CollegeDetails) => {
     return {
         type: "FETCH_COLLEGE_DETAILS_SUCCESS",
         payload: payload,
     };
 };
 
-export const fetchCollegeDetailsFailure = (payload: {
-    message: string;
-}) => {
+export const fetchCollegeDetailsFailure = (payload: { message: string }) => {
     return {
         type: "FETCH_COLLEGE_DETAILS_FAILURE",
         payload: payload,
     };
 };
 
-export const asyncFetchCollegeDetailsStart = (collegeId: string): ThunkAction<
-    void,
-    RootState,
-    unknown,
-    Action<string>
-> => {
+export const asyncFetchCollegeDetailsStart = (
+    collegeId: string
+): ThunkAction<void, RootState, unknown, Action<string>> => {
     return async (dispatch) => {
         dispatch(fetchCollegeDetailsStart());
         let queryString = `/colleges/details?id=${collegeId}`;
@@ -244,11 +224,9 @@ export const asyncFetchCollegeDetailsStart = (collegeId: string): ThunkAction<
     };
 };
 
-
 /**
  * Actions creators for fetching similar colleges
  */
-
 
 export const fetchSimilarCollegesStart = () => {
     return {
@@ -256,35 +234,29 @@ export const fetchSimilarCollegesStart = () => {
     };
 };
 
-export const fetchSimilarCollegesSuccess = (
-    payload: College[]
-) => {
+export const fetchSimilarCollegesSuccess = (payload: College[]) => {
     return {
         type: "FETCH_SIMILAR_COLLEGES_SUCCESS",
         payload: payload,
     };
 };
 
-
-export const fetchSimilarCollegesFailure = (payload: {
-    message: string;
-}) => {
+export const fetchSimilarCollegesFailure = (payload: { message: string }) => {
     return {
         type: "FETCH_SIMILAR_COLLEGES_FAILURE",
         payload: payload,
     };
 };
 
-
-export const asyncFetchSimilarCollegesStart = (city: string, courses: string[]): ThunkAction<
-    void,
-    RootState,
-    unknown,
-    Action<string>
-> => {
+export const asyncFetchSimilarCollegesStart = (
+    city: string,
+    courses: string[]
+): ThunkAction<void, RootState, unknown, Action<string>> => {
     return async (dispatch) => {
         dispatch(fetchSimilarCollegesStart());
-        let queryString = `/colleges/similar-colleges?city=${city}&courses=${courses.join(',')}`;
+        let queryString = `/colleges/similar-colleges?city=${city}&courses=${courses.join(
+            ","
+        )}`;
         try {
             let apiResponse = await Axios.get(queryString);
             let apiResponseData: College[] = apiResponse.data.data;

@@ -12,8 +12,8 @@ export type AllActions = CollegeActions | StudentActions;
 
 export type LoadingState = {
     //The keys here should be prefix of the respective action that it corresponds to.
-    //For example, if the actions to be covered are FETCH_GAME_INFO_START, FETCH_GAME_INFO_SUCCESS and FETCH_GAME_INFO_FAILURE
-    //then our loadingState slice will contain FETCH_GAME_INFO field. This pattern is important and is used for regex based
+    //For example, if the actions to be covered are FETCH_COLLEGE_DETAILS_START, FETCH_COLLEGE_DETAILS_SUCCESS and FETCH_COLLEGE_DETAILS_FAILURE
+    //then our loadingState slice will contain FETCH_COLLEGE_DETAILS field. This pattern is important and is used for regex based
     //matching in the reducer.
 
     FETCH_STATEWISE_STATS: boolean;

@@ -3,7 +3,9 @@ import { connect, ConnectedProps } from "react-redux";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 
 /**
- * This component is responsible for filtering colleges based on chosen criteria ( state/ courses)
+ * This component is responsible for filtering colleges based on chosen criteria ( state / courses)
+ * # It is imported into <Dashboard /> for displaying filtered colleges statewise/coursewise.
+ * # It uses the <ListView /> child component to display the fetched data. 
  */
 
 //import styles
@@ -22,6 +24,8 @@ import { RootState } from "../../store/store";
 
 
 type PropsFromParents = {
+    //type === "state" indicates we want to filter colleges statewise
+    //value === "UP" indicates that we want to filter statewise for the state UP
     type: string;
     value: string;
 }
@@ -50,11 +54,13 @@ type State = {
 export class Dashboard extends React.Component<AllProps, State> {
 
     componentDidMount() {
+        //dispatch action to load fetch similar colleges and store in redux store
         this.props.onFilterColleges(this.props.type, this.props.value);
     }
 
     componentDidUpdate(prevProps: AllProps, prevState: State) {
-        if(prevProps.type !== this.props.type || prevProps.value !== this.props.value){
+        //to make sure that colleges are fetched on every update of type/value and not just on mounting
+        if (prevProps.type !== this.props.type || prevProps.value !== this.props.value) {
             this.props.onFilterColleges(this.props.type, this.props.value);
         }
     }
@@ -63,7 +69,7 @@ export class Dashboard extends React.Component<AllProps, State> {
         return (
             <div className={classes["Container"]}>
                 <div className={classes["college-list"]}>
-                    <ListView type={this.props.type} value={this.props.value}/>
+                    <ListView type={this.props.type} value={this.props.value} />
                 </div>
             </div>
         )

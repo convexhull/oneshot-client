@@ -64,24 +64,25 @@ export class CollegeDetails extends React.Component<AllProps, State> {
     }
 
     componentDidMount() {
+        //trigger fetch college details on first render
         this.props.onFetchCollegeDetails(this.props.match.params.collegeId);
     }
-    
 
     componentDidUpdate(prevProps: AllProps) {
-        if(this.props.match.params.collegeId !== prevProps.match.params.collegeId){
+        //Used to retrigger fetch college details when route param changes. That is user selects different clg 
+        if (this.props.match.params.collegeId !== prevProps.match.params.collegeId) {
             this.props.onFetchCollegeDetails(this.props.match.params.collegeId);
         }
     }
 
     viewSimilarHandler = () => {
+        //handler for viewing similar clgs
         this.props.onFetchSimilarColleges(this.props.collegeDetails.city, this.props.collegeDetails.courses);
         this.setState((state) => {
             return {
                 showSimilarColleges: !state.showSimilarColleges
             }
         })
-      
     }
 
     render() {
@@ -90,7 +91,6 @@ export class CollegeDetails extends React.Component<AllProps, State> {
                 <img src={Spinner} alt="spinner" />
             </div>
         );
-
 
         let collegeDetails = (
             <>
@@ -117,21 +117,21 @@ export class CollegeDetails extends React.Component<AllProps, State> {
                             <div className={classes["college-description__courses-info"]}>
                                 <p className={classes["college-description__courses-text"]}>Courses</p>
                                 <div className={classes["college-description__courses"]}>
-                                    {this.props.collegeDetails.courses.map((course) => (
-                                        <p className={classes["college-description__course"]}><span><i className="fas fa-check"></i></span>{course}</p>
+                                    {this.props.collegeDetails.courses.map((course, index) => (
+                                        <p key={`course-${index}`} className={classes["college-description__course"]}><span><i className="fas fa-check"></i></span>{course}</p>
                                     ))}
                                 </div>
                             </div>
                         </div>
-                    <div className={classes["similar-clg-btn"]}>   
-                        <Button clicked={this.viewSimilarHandler}>{this.state.showSimilarColleges ? "Hide" : "Show"} similar colleges</Button>
-                    </div>
+                        <div className={classes["similar-clg-btn"]}>
+                            <Button clicked={this.viewSimilarHandler}>{this.state.showSimilarColleges ? "Hide" : "Show"} similar colleges</Button>
+                        </div>
                     </div>
                 </div>
                 <div className={classes["students-list"]}>
-                    {this.state.showSimilarColleges ? <CollegesList type="similar" currentCollegeId={this.props.collegeDetails._id} value={this.props.collegeDetails.city} /> : null }
+                    {this.state.showSimilarColleges ? <CollegesList type="similar" currentCollegeId={this.props.collegeDetails._id} value={this.props.collegeDetails.city} /> : null}
                 </div>
-                <div  className={classes["students-list"]}>
+                <div className={classes["students-list"]}>
                     <StudentsList students={this.props.collegeDetails.students} />
                 </div>
             </>
@@ -139,7 +139,7 @@ export class CollegeDetails extends React.Component<AllProps, State> {
 
         return (
             <div className={classes["Container"]}>
-                {this.props.collegeDetailsLoading ? mainSpinner : collegeDetails }
+                {this.props.collegeDetailsLoading ? mainSpinner : collegeDetails}
             </div>
         )
     }
